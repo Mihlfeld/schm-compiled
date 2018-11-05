@@ -23,11 +23,16 @@ const mapValues: MapValuesFunction = (
 ) =>
   Object.keys(params).reduce((finalParams, paramName) => {
     const options = params[paramName];
+
+    let value = undefined;
+
     try {
-        const value = values[paramName];
+        value = values[paramName];
+
     } catch (e) {
-        const value = undefined;
+
     }
+
     const paramPath = [...paramNames, paramName].join(".");
     const mergeParam = finalValue => ({
       ...finalParams,
