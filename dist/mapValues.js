@@ -31,7 +31,12 @@ var mapValues = function mapValues(values, params, transformValueFn) {
   var paramNames = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : [];
   return Object.keys(params).reduce(function (finalParams, paramName) {
     var options = params[paramName];
-    var value = values[paramName];
+
+    try {
+      var _value = values[paramName];
+    } catch (e) {
+      var _value2 = undefined;
+    }
 
     var paramPath = _toConsumableArray(paramNames).concat([paramName]).join(".");
 
